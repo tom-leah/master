@@ -1,6 +1,7 @@
 import pygame
 import sys
 import random
+import threading
 
 pygame.init()
 
@@ -40,6 +41,10 @@ EXPLOSION_FRAMES = 10
 score = 0
 font = pygame.font.SysFont("Arial", 28)
 
+# Benedict status and timer
+benedictBad = False
+timer_done = True
+
 clock = pygame.time.Clock()
 running = True
 
@@ -49,6 +54,9 @@ def spawn_target():
     y = random.randint(0, HEIGHT - TARGET_SIZE)
     targets.append([x, y])
 
+def set_variable():
+    global timer_done
+    timer_done = True
 
 while running:
     clock.tick(60)  # 60 FPS
@@ -101,6 +109,13 @@ while running:
 
                 # Score
                 score += 10
+
+                # Benedict Bad
+                benedictBad = True
+                timer_done = False
+                timer = threading.Timer(5.0, set_variable)  # 5.0 is the delay in seconds
+                timer.start()
+
                 break
 
     # Update explosion frames
@@ -131,5 +146,10 @@ while running:
     # Draw score
     score_text = font.render(f"Score: {score}", True, BLACK)
     WIN.blit(score_text, (10, 10))
+
+    # Draw benedict bad
+    if benedictBad and not timer_done:
+        benedict_text = font.render(f"Benedict Bad!", True, BLACK)
+        WIN.blit(benedict_text, (10, 40))
 
     pygame.display.update()
