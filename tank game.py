@@ -42,7 +42,7 @@ score = 0
 font = pygame.font.SysFont("Arial", 28)
 
 # Benedict status and timer
-benedictBad = False
+benedict67 = False
 timer_done = True
 
 clock = pygame.time.Clock()
@@ -111,7 +111,7 @@ while running:
                 score += 10
 
                 # Benedict Bad
-                benedictBad = True
+                benedict67= True
                 timer_done = False
                 timer = threading.Timer(5.0, set_variable)  # 5.0 is the delay in seconds
                 timer.start()
@@ -148,8 +148,8 @@ while running:
     WIN.blit(score_text, (10, 10))
 
     # Draw benedict bad
-    if benedictBad and not timer_done:
-        benedict_text = font.render(f"Benedict Bad!", True, BLACK)
+    if benedict67 and not timer_done:
+        benedict_text = font.render(f"Benedict 67!", True, BLACK)
         WIN.blit(benedict_text, (10, 40))
 
     pygame.display.update()
