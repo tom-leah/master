@@ -9,15 +9,15 @@ import sys
 
 pygame.init()
 
-WIDTH, HEIGHT = 800, 600
-TILE = 20
+WIDTH, HEIGHT = 1200, 900
+TILE = 25
 GRID_W = WIDTH // TILE
 GRID_H = HEIGHT // TILE
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
 
-FONT = pygame.font.SysFont("Arial", 24)
+FONT = pygame.font.SysFont("Times", 30 , bold=True, italic=True)
 
 # =========================
 # Helper Functions
