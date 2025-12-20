@@ -3,6 +3,7 @@ import pygame.gfxdraw
 import random
 import sys
 
+
 # =========================
 #   REALISTIC SNAKE GAME
 # =========================
